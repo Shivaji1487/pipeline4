@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: sshivaji555/pipeline3-app:placeholder
+          image: sshivaji555/pipeline3-app:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80

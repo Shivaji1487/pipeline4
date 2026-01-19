@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pipeline4-app
+  namespace: abc-bank
 spec:
   replicas: 1
   selector:
@@ -14,7 +15,14 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: sshivaji555/pipeline4-app:latest
+          image: sshivaji555/pipeline4-app:BUILD_TAG
           imagePullPolicy: Always
           ports:
             - containerPort: 80
+          volumeMounts:
+            - name: pipeline4-storage
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: pipeline4-storage
+          persistentVolumeClaim:
+            claimName: pipeline4-pvc

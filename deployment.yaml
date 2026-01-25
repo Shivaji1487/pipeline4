@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.29.4-alpine
+        image: sshivaji555/pipeline4-app:latest  # always pulls latest image built by Jenkins
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         volumeMounts:

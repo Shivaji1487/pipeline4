@@ -7,15 +7,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: pipeline4
+      app: pipeline4-app
   template:
     metadata:
       labels:
-        app: pipeline4
+        app: pipeline4-app
     spec:
       containers:
       - name: nginx
-        image: sshivaji555/pipeline4-app:latest  # always pulls latest image built by Jenkins
+        image: sshivaji555/pipeline4-app:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80

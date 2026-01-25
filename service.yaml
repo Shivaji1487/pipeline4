@@ -6,7 +6,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: pipeline4
+    app: pipeline4-app   # match the pod label exactly
   ports:
     - port: 80
       targetPort: 80

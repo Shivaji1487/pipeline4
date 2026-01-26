@@ -14,17 +14,18 @@ spec:
         app: pipeline4-app
     spec:
 
-      # 🔹 INIT CONTAINER (YEH MISSING THA)
+      # 🔹 INIT CONTAINER
       initContainers:
       - name: copy-html
         image: sshivaji555/pipeline4-app:latest
+        imagePullPolicy: Always   # 🔥 important!
         command:
           - sh
           - -c
           - cp /usr/share/nginx/html/index.html /pv/index.html
         volumeMounts:
-        - name: html-volume
-          mountPath: /pv
+          - name: html-volume
+            mountPath: /pv
 
       # 🔹 MAIN CONTAINER
       containers:
@@ -32,10 +33,10 @@ spec:
         image: sshivaji555/pipeline4-app:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 80
+          - containerPort: 80
         volumeMounts:
-        - name: html-volume
-          mountPath: /usr/share/nginx/html
+          - name: html-volume
+            mountPath: /usr/share/nginx/html
 
       # 🔹 VOLUME (PVC)
       volumes:

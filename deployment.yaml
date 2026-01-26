@@ -13,6 +13,20 @@ spec:
       labels:
         app: pipeline4-app
     spec:
+
+      # 🔹 INIT CONTAINER (YEH MISSING THA)
+      initContainers:
+      - name: copy-html
+        image: sshivaji555/pipeline4-app:latest
+        command:
+          - sh
+          - -c
+          - cp /usr/share/nginx/html/index.html /pv/index.html
+        volumeMounts:
+        - name: html-volume
+          mountPath: /pv
+
+      # 🔹 MAIN CONTAINER
       containers:
       - name: nginx
         image: sshivaji555/pipeline4-app:latest
@@ -22,6 +36,8 @@ spec:
         volumeMounts:
         - name: html-volume
           mountPath: /usr/share/nginx/html
+
+      # 🔹 VOLUME (PVC)
       volumes:
       - name: html-volume
         persistentVolumeClaim:

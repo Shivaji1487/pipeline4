@@ -9,4 +9,6 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeName: pipeline4-pv        # <--- add this line
+  volumeName: pipeline4-pv
+  storageClassName: ""
+
